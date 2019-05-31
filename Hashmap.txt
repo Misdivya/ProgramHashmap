@@ -1,0 +1,57 @@
+import java.io.File;
+import java.io.IOException;
+import java.util.*;
+public class NewHashmap {
+	static File text;
+	public HashMap<Integer,String> getListOfStudents()throws IOException{
+		HashMap<Integer,String> hm1 = new HashMap<Integer,String>();
+		Scanner sc = new Scanner(text);
+		int i=0;
+		while(sc.hasNextLine())
+		{
+			String newrow = sc.nextLine();
+			if(i==0)
+			{
+				i=i+10;
+				continue;
+			}
+			String arr[] = newrow.split(",");
+			int gre = Integer.parseInt(arr[1]);
+			int toefl = Integer.parseInt(arr[2]);
+			if((gre>332)&&(toefl>111))
+			{
+				int sno= Integer.parseInt(arr[0]);
+				String str = arr[1]+","+arr[2]+","+arr[3]+","+arr[4]+","+arr[5]+","+arr[6]+","+arr[7]+","+arr[8];
+				hm1.put(sno,str);
+			}
+		}
+		return hm1;
+	}
+	public HashMap<Double,String> findGreAndToeflScore()throws IOException{
+		HashMap<Double,String> hm2 = new HashMap<Double,String>();
+		Scanner sc = new Scanner(text);
+		int i=0;
+		while(sc.hasNextLine())
+		{
+			String newline = sc.nextLine();
+			if(i==0)
+			{
+				i=i+10;
+				continue;
+			}
+			String arr1[] = newline.split(",");
+			double coa = Double.parseDouble(arr1[8]);
+			String str = arr1[1]+","+arr1[2];
+			hm2.put(coa,str);
+		}
+		return hm2;
+	}
+	public static void main(String[] args) throws IOException{
+		text = new File("C:/Users/Divya/Desktop/BigDataset.txt");
+		NewHashmap obj = new NewHashmap();
+		System.out.println("hashmap is: ");
+		System.out.println(obj.getListOfStudents());
+		System.out.println("sesdvfd");
+		System.out.println(obj.findGreAndToeflScore());
+	}
+}
